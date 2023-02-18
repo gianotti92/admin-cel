@@ -5,14 +5,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Component;
+
 
 import java.io.IOException;
 
-@Component
 public class FXMLController {
 
     @Autowired
@@ -45,4 +47,25 @@ public class FXMLController {
         stage.show();
         dialog.show();
     }
+
+    protected Stage getDialogCreatedOk(String okMessage) {
+        final Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        VBox dialogVbox = new VBox(20);
+        dialogVbox.getChildren().add(new Text(okMessage));
+        Scene dialogScene = new Scene(dialogVbox, 300, 200);
+        dialog.setScene(dialogScene);
+        return dialog;
+    }
+
+    protected Stage getDialogCreatedError(String errorMsg) {
+        final Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        VBox dialogVbox = new VBox(20);
+        dialogVbox.getChildren().add(new Text("errorMsg"));
+        Scene dialogScene = new Scene(dialogVbox, 300, 200);
+        dialog.setScene(dialogScene);
+        return dialog;
+    }
+
 }

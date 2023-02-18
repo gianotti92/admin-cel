@@ -2,7 +2,10 @@ package com.gestion.jc.service;
 
 import com.gestion.jc.domain.Client;
 import com.gestion.jc.repository.ClientRepository;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ClientService {
@@ -15,5 +18,9 @@ public class ClientService {
 
     public Client save(Client client) {
         return clientRepository.save(client);
+    }
+
+    public List<Client> find(Pageable pageable) {
+        return clientRepository.findAll(pageable).getContent();
     }
 }

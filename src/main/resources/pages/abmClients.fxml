@@ -6,10 +6,18 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gestion.jc.controller.ABMClientsController">
    <children>
       <Label layoutX="14.0" layoutY="14.0" text="Clientes" textAlignment="CENTER" />
-      <ListView layoutX="14.0" layoutY="48.0" prefHeight="200.0" prefWidth="542.0" />
 
 
-      <Button fx:id="createNewClientBtnId" layoutX="14.0" layoutY="267.0" mnemonicParsing="false" onAction="#createNewClient" text="Nuevo" />
+      <Button fx:id="createNewClientBtnId" layoutX="14.0" layoutY="345.0" mnemonicParsing="false" onAction="#createNewClient" text="Nuevo" />
+      <TableView fx:id="ClientTableId" layoutX="14.0" layoutY="37.0" prefHeight="200.0" prefWidth="562.0" >
+        <columns>
+          <TableColumn prefWidth="75.0" text="nombre" fx:id="nameColumnId"/>
+          <TableColumn prefWidth="75.0" text="trabajo en curso" fx:id="workInProgressColumnId" />
+          <TableColumn prefWidth="75.0" text="contacto" fx:id="contactColumnId" />
+        </columns>
+      </TableView>
+      <Button fx:id="NextClientPageBtnId" layoutX="511.0" layoutY="248.0" mnemonicParsing="false" text="Siguiente" />
+      <Button fx:id="BackClientPageBtnId" layoutX="445.0" layoutY="248.0" mnemonicParsing="false" text="Anterior" />
 
 
    </children>

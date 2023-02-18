@@ -35,18 +35,20 @@ public class CreateClientController extends FXMLController {
 
         if (nameTxt.getText() == null || contactTxt.getText() == null
                 || nameTxt.getText().isEmpty() || contactTxt.getText().isEmpty()) {
+            getDialogCreatedError("Falta completar campos");
 
+        } else {
+            ClientDto clientDto = this.createNewDtoClient();
+
+            clientAdapter.save(clientDto);
+
+            var createdOkDialog = getDialogCreatedOk("Client Created OK");
+
+            openFxmlPageWithPopUp(PageRoute.ABM_CLIENT.getRoute(), createdOkDialog);
+
+            closeLastPage(actionEvent);
         }
 
-        ClientDto clientDto = this.createNewDtoClient();
-
-        //clientAdapter.save(clientDto);
-
-        var createdOkDialog = getDialogCreatedOk();
-
-        openFxmlPageWithPopUp(PageRoute.ABM_CLIENT.getRoute(), createdOkDialog);
-
-        closeLastPage(actionEvent);
     }
 
 
@@ -59,13 +61,4 @@ public class CreateClientController extends FXMLController {
         return clientDto;
     }
 
-    private Stage getDialogCreatedOk() {
-        final Stage dialog = new Stage();
-        dialog.initModality(Modality.APPLICATION_MODAL);
-        VBox dialogVbox = new VBox(20);
-        dialogVbox.getChildren().add(new Text("This is a Dialog"));
-        Scene dialogScene = new Scene(dialogVbox, 300, 200);
-        dialog.setScene(dialogScene);
-        return dialog;
-    }
 }
