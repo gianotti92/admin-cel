@@ -1,0 +1,8 @@
+CREATE TABLE client (
+  id INT(50) NOT NULL AUTO_INCREMENT,
+  name VARCHAR(10) NOT NULL,
+  contact VARCHAR(200) NOT NULL,
+  extra_data VARCHAR(200) DEFAULT NULL,
+  has_work_in_progress VARCHAR(200) DEFAULT FALSE,
+  PRIMARY KEY (id)
+)
