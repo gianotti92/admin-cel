@@ -28,7 +28,8 @@ public class FXMLController {
 
 
     public void openFxmlPage(String route) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource(route));
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getClassLoader().getResource(route));
         fxmlLoader.setControllerFactory(context::getBean);
         Parent parent = fxmlLoader.load();
         Stage stage = new Stage();

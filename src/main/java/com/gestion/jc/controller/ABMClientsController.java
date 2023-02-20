@@ -16,6 +16,8 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -26,7 +28,7 @@ public class ABMClientsController extends FXMLController implements Initializabl
     private ClientAdapter clientAdapter;
 
     @FXML
-    private TableView<ClientDto> ClientTableId;
+    private TableView<ClientDto> clientTableId;
 
     @FXML
     private TableColumn<ClientDto, String> nameColumnId;
@@ -37,20 +39,46 @@ public class ABMClientsController extends FXMLController implements Initializabl
     @FXML
     private TableColumn<ClientDto, String> workInProgressColumnId;
 
+    private List<ClientDto> clients = new ArrayList<>();
+
+    private Pageable page = Pageable.ofSize(20).withPage(0);
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        nameColumnId.setCellValueFactory(new PropertyValueFactory<ClientDto, String>( "name"));
-        contactColumnId.setCellValueFactory(new PropertyValueFactory<ClientDto, String>( "contact"));
-        workInProgressColumnId.setCellValueFactory(new PropertyValueFactory<ClientDto, String>( "hasWorkInProgress"));
-        var clients = clientAdapter.find(Pageable.ofSize(20).withPage(0));
-        ClientTableId.getItems().setAll(clients);
+        syncViewWithController();
+        updateView();
     }
 
     @FXML
     public void createNewClient(ActionEvent actionEvent) throws IOException {
         closeLastPage(actionEvent);
         openFxmlPage(PageRoute.CREATE_NEW_CLIENT.getRoute());
+    }
+
+    @FXML
+    public void nextClientPage(ActionEvent actionEvent) throws IOException {
+        syncViewWithController();
+        page = page.next();
+        updateView();
+    }
+
+    @FXML
+    public void backClientPage(ActionEvent actionEvent) throws IOException {
+        syncViewWithController();
+        page = page.previousOrFirst();
+        updateView();
+    }
+
+    private void syncViewWithController() {
+        nameColumnId.setCellValueFactory(new PropertyValueFactory<ClientDto, String>( "name"));
+        contactColumnId.setCellValueFactory(new PropertyValueFactory<ClientDto, String>( "contact"));
+        workInProgressColumnId.setCellValueFactory(new PropertyValueFactory<ClientDto, String>( "hasWorkInProgress"));
+    }
+
+    private void updateView() {
+        clients = clientAdapter.find(page);
+        clientTableId.getItems().setAll(clients);
     }
 
 }

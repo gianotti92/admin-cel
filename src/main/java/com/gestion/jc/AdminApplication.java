@@ -1,5 +1,6 @@
 package com.gestion.jc;
 
+import com.gestion.jc.util.PageRoute;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -8,10 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 
-
 public class AdminApplication extends Application {
-
-    private static final String INITIAL_PAGE= "pages/init.fxml";
 
     private static ConfigurableApplicationContext applicationContext;
 
@@ -26,9 +24,8 @@ public class AdminApplication extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getClassLoader().getResource(INITIAL_PAGE));
+        loader.setLocation(getClass().getClassLoader().getResource(PageRoute.INITIAL.getRoute()));
         loader.setControllerFactory(applicationContext::getBean);
         Scene scene = new Scene(loader.load());
         stage.setScene(scene);
