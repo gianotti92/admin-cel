@@ -17,4 +17,10 @@ public class InitController extends FXMLController {
         openFxmlPage(PageRoute.ABM_CLIENT.getRoute());
     }
 
+    @FXML
+    public void orderBtnSelected(ActionEvent actionEvent) throws IOException {
+        closeLastPage(actionEvent);
+        openFxmlPage(PageRoute.ABM_ORDER.getRoute());
+    }
+
 }

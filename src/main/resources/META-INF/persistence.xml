@@ -6,6 +6,7 @@
     <persistence-unit name="default">
 
         <class>com.gestion.jc.domain.Client</class>
+        <class>com.gestion.jc.domain.Order</class>
         <properties>
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/cellphone_admin"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>

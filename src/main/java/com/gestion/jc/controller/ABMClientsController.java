@@ -11,7 +11,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 
 import java.io.IOException;
@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-@Component
+@Controller
 public class ABMClientsController extends FXMLController implements Initializable {
 
     @Autowired

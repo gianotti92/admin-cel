@@ -9,15 +9,15 @@
 
 
       <Button fx:id="createNewClientBtnId" layoutX="14.0" layoutY="345.0" mnemonicParsing="false" onAction="#createNewClient" text="Nuevo" />
-      <TableView fx:id="clientTableId" layoutX="14.0" layoutY="37.0" prefHeight="200.0" prefWidth="562.0" >
+      <TableView fx:id="clientTableId" layoutX="14.0" layoutY="37.0" prefHeight="200.0" prefWidth="562.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="nombre" fx:id="nameColumnId"/>
-          <TableColumn prefWidth="75.0" text="trabajo en curso" fx:id="workInProgressColumnId" />
-          <TableColumn prefWidth="75.0" text="contacto" fx:id="contactColumnId" />
+          <TableColumn fx:id="nameColumnId" prefWidth="75.0" text="nombre" />
+          <TableColumn fx:id="workInProgressColumnId" prefWidth="134.0" text="trabajo en curso" />
+          <TableColumn fx:id="contactColumnId" prefWidth="165.0" text="contacto" />
         </columns>
       </TableView>
-      <Button fx:id="NextClientPageBtnId" layoutX="511.0" layoutY="248.0" mnemonicParsing="false" text="Siguiente"  onAction="#nextClientPage"/>
-      <Button fx:id="BackClientPageBtnId" layoutX="445.0" layoutY="248.0" mnemonicParsing="false" text="Anterior"  onAction="#backClientPage"/>
+      <Button fx:id="NextClientPageBtnId" layoutX="511.0" layoutY="248.0" mnemonicParsing="false" onAction="#nextClientPage" text="Siguiente" />
+      <Button fx:id="BackClientPageBtnId" layoutX="445.0" layoutY="248.0" mnemonicParsing="false" onAction="#backClientPage" text="Anterior" />
 
 
    </children>
