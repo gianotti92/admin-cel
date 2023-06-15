@@ -2,6 +2,7 @@ package com.gestion.jc.clients.infraestructure.mysqlpersistence;
 
 import com.gestion.jc.clients.domain.Client;
 import com.gestion.jc.clients.domain.ClientRepository;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.domain.Pageable;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository
+@Profile(value = "local")
 public class ClientMysqlRepository implements ClientRepository {
     
     private ClientPersistenceMapper mapper;
