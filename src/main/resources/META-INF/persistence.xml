@@ -5,8 +5,8 @@
              version="2.2">
     <persistence-unit name="default">
 
-        <class>com.gestion.jc.infraestructure.client.persistence.dto.ClientPersistenceDto</class>
-        <class>com.gestion.jc.infraestructure.order.persistence.dto.OrderPersistenceDto</class>
+        <class>com.gestion.jc.clients.infraestructure.mysqlpersistence.ClientPersistenceDto</class>
+        <class>com.gestion.jc.orders.infraestructure.mysqlpersistence.OrderPersistenceDto</class>
         <properties>
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/cellphone_admin"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
